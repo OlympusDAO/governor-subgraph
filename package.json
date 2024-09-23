@@ -13,9 +13,10 @@
     "matchstick-as": "0.5.0"
   },
   "scripts": {
-    "codegen": "graph codegen",
+    "codegen": "graph codegen && prettier --write generated/",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ olympus-governor",
-    "test": "graph test"
+    "test": "graph test",
+    "lint": "prettier --write ."
   }
 }
