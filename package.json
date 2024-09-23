@@ -1,0 +1,10 @@
+{
+  "name": "governor-subgraph",
+  "version": "1.0.0",
+  "description": "Subgraph for the Olympus Governor contracts",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.82.0"
+  }
+}
