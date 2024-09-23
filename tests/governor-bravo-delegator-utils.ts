@@ -17,7 +17,7 @@ import {
   VotingPeriodSet,
   WhitelistAccountExpirationSet,
   WhitelistGuardianSet
-} from "../generated/Contract/Contract"
+} from "../generated/GovernorBravoDelegator/GovernorBravoDelegator"
 
 export function createNewAdminEvent(
   oldAdmin: Address,

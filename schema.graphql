@@ -1,0 +1,149 @@
+type GovernorBravoDelegatorNewAdmin @entity(immutable: true) {
+  id: Bytes!
+  oldAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorNewImplementation @entity(immutable: true) {
+  id: Bytes!
+  oldImplementation: Bytes! # address
+  newImplementation: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorNewPendingAdmin @entity(immutable: true) {
+  id: Bytes!
+  oldPendingAdmin: Bytes! # address
+  newPendingAdmin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalCanceled @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalCreated @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  proposer: Bytes! # address
+  targets: [Bytes!]! # address[]
+  values: [BigInt!]! # uint256[]
+  signatures: [String!]! # string[]
+  calldatas: [Bytes!]! # bytes[]
+  startBlock: BigInt! # uint256
+  description: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalExecuted @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalQueued @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  eta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalThresholdSet @entity(immutable: true) {
+  id: Bytes!
+  oldProposalThreshold: BigInt! # uint256
+  newProposalThreshold: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalVetoed @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorProposalVotingStarted @entity(immutable: true) {
+  id: Bytes!
+  GovernorBravoDelegator_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorVetoGuardianSet @entity(immutable: true) {
+  id: Bytes!
+  oldGuardian: Bytes! # address
+  newGuardian: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorVoteCast @entity(immutable: true) {
+  id: Bytes!
+  voter: Bytes! # address
+  proposalId: BigInt! # uint256
+  support: Int! # uint8
+  votes: BigInt! # uint256
+  reason: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorVotingDelaySet @entity(immutable: true) {
+  id: Bytes!
+  oldVotingDelay: BigInt! # uint256
+  newVotingDelay: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorVotingPeriodSet @entity(immutable: true) {
+  id: Bytes!
+  oldVotingPeriod: BigInt! # uint256
+  newVotingPeriod: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorWhitelistAccountExpirationSet
+  @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  expiration: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GovernorBravoDelegatorWhitelistGuardianSet @entity(immutable: true) {
+  id: Bytes!
+  oldGuardian: Bytes! # address
+  newGuardian: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

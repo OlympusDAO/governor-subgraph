@@ -5,36 +5,36 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Contract
+    name: GovernorBravoDelegator
     network: mainnet
     source:
       address: "0x0941233c964e7d7Efeb05D253176E5E634cEFfcD"
-      abi: Contract
+      abi: GovernorBravoDelegator
       startBlock: 19128561
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - NewAdmin
-        - NewImplementation
-        - NewPendingAdmin
-        - ProposalCanceled
-        - ProposalCreated
-        - ProposalExecuted
-        - ProposalQueued
-        - ProposalThresholdSet
-        - ProposalVetoed
-        - ProposalVotingStarted
-        - VetoGuardianSet
-        - VoteCast
-        - VotingDelaySet
-        - VotingPeriodSet
-        - WhitelistAccountExpirationSet
-        - WhitelistGuardianSet
+        - GovernorBravoDelegatorNewAdmin
+        - GovernorBravoDelegatorNewImplementation
+        - GovernorBravoDelegatorNewPendingAdmin
+        - GovernorBravoDelegatorProposalCanceled
+        - GovernorBravoDelegatorProposalCreated
+        - GovernorBravoDelegatorProposalExecuted
+        - GovernorBravoDelegatorProposalQueued
+        - GovernorBravoDelegatorProposalThresholdSet
+        - GovernorBravoDelegatorProposalVetoed
+        - GovernorBravoDelegatorProposalVotingStarted
+        - GovernorBravoDelegatorVetoGuardianSet
+        - GovernorBravoDelegatorVoteCast
+        - GovernorBravoDelegatorVotingDelaySet
+        - GovernorBravoDelegatorVotingPeriodSet
+        - GovernorBravoDelegatorWhitelistAccountExpirationSet
+        - GovernorBravoDelegatorWhitelistGuardianSet
       abis:
-        - name: Contract
-          file: ./abis/Contract.json
+        - name: GovernorBravoDelegator
+          file: ./abis/GovernorBravoDelegator.json
       eventHandlers:
         - event: NewAdmin(address,address)
           handler: handleNewAdmin
@@ -68,4 +68,4 @@ dataSources:
           handler: handleWhitelistAccountExpirationSet
         - event: WhitelistGuardianSet(address,address)
           handler: handleWhitelistGuardianSet
-      file: ./src/contract.ts
+      file: ./src/governor-bravo-delegator.ts
