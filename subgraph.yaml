@@ -16,22 +16,22 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - GovernorBravoDelegatorNewAdmin
-        - GovernorBravoDelegatorNewImplementation
-        - GovernorBravoDelegatorNewPendingAdmin
-        - GovernorBravoDelegatorProposalCanceled
-        - GovernorBravoDelegatorProposalCreated
-        - GovernorBravoDelegatorProposalExecuted
-        - GovernorBravoDelegatorProposalQueued
-        - GovernorBravoDelegatorProposalThresholdSet
-        - GovernorBravoDelegatorProposalVetoed
-        - GovernorBravoDelegatorProposalVotingStarted
-        - GovernorBravoDelegatorVetoGuardianSet
-        - GovernorBravoDelegatorVoteCast
-        - GovernorBravoDelegatorVotingDelaySet
-        - GovernorBravoDelegatorVotingPeriodSet
-        - GovernorBravoDelegatorWhitelistAccountExpirationSet
-        - GovernorBravoDelegatorWhitelistGuardianSet
+        - NewAdmin
+        - NewImplementation
+        - NewPendingAdmin
+        - ProposalCanceled
+        - ProposalCreated
+        - ProposalExecuted
+        - ProposalQueued
+        - ProposalThresholdSet
+        - ProposalVetoed
+        - ProposalVotingStarted
+        - VetoGuardianSet
+        - VoteCast
+        - VotingDelaySet
+        - VotingPeriodSet
+        - WhitelistAccountExpirationSet
+        - WhitelistGuardianSet
       abis:
         - name: GovernorBravoDelegator
           file: ./abis/GovernorBravoDelegator.json

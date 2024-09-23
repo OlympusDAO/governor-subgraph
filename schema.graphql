@@ -1,4 +1,4 @@
-type GovernorBravoDelegatorNewAdmin @entity(immutable: true) {
+type NewAdmin @entity(immutable: true) {
   id: Bytes!
   oldAdmin: Bytes! # address
   newAdmin: Bytes! # address
@@ -7,7 +7,7 @@ type GovernorBravoDelegatorNewAdmin @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorNewImplementation @entity(immutable: true) {
+type NewImplementation @entity(immutable: true) {
   id: Bytes!
   oldImplementation: Bytes! # address
   newImplementation: Bytes! # address
@@ -16,7 +16,7 @@ type GovernorBravoDelegatorNewImplementation @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorNewPendingAdmin @entity(immutable: true) {
+type NewPendingAdmin @entity(immutable: true) {
   id: Bytes!
   oldPendingAdmin: Bytes! # address
   newPendingAdmin: Bytes! # address
@@ -25,17 +25,18 @@ type GovernorBravoDelegatorNewPendingAdmin @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorProposalCanceled @entity(immutable: true) {
+type ProposalCanceled @entity(immutable: true) {
   id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+  proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
-type GovernorBravoDelegatorProposalCreated @entity(immutable: true) {
-  id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+type ProposalCreated @entity(immutable: true) {
+  id: Bytes! # proposalId
+  proposalId: BigInt! # uint256
   proposer: Bytes! # address
   targets: [Bytes!]! # address[]
   values: [BigInt!]! # uint256[]
@@ -46,26 +47,34 @@ type GovernorBravoDelegatorProposalCreated @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+
+  cancelled: ProposalCanceled @derivedFrom(field: "proposal")
+  executed: ProposalExecuted @derivedFrom(field: "proposal")
+  queued: ProposalQueued @derivedFrom(field: "proposal")
+  vetoed: ProposalVetoed @derivedFrom(field: "proposal")
+  votingStarted: ProposalVotingStarted @derivedFrom(field: "proposal")
 }
 
-type GovernorBravoDelegatorProposalExecuted @entity(immutable: true) {
+type ProposalExecuted @entity(immutable: true) {
   id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+  proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
-type GovernorBravoDelegatorProposalQueued @entity(immutable: true) {
+type ProposalQueued @entity(immutable: true) {
   id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+  proposalId: BigInt! # uint256
   eta: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
-type GovernorBravoDelegatorProposalThresholdSet @entity(immutable: true) {
+type ProposalThresholdSet @entity(immutable: true) {
   id: Bytes!
   oldProposalThreshold: BigInt! # uint256
   newProposalThreshold: BigInt! # uint256
@@ -74,23 +83,25 @@ type GovernorBravoDelegatorProposalThresholdSet @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorProposalVetoed @entity(immutable: true) {
+type ProposalVetoed @entity(immutable: true) {
   id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+  proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
-type GovernorBravoDelegatorProposalVotingStarted @entity(immutable: true) {
+type ProposalVotingStarted @entity(immutable: true) {
   id: Bytes!
-  GovernorBravoDelegator_id: BigInt! # uint256
+  proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
-type GovernorBravoDelegatorVetoGuardianSet @entity(immutable: true) {
+type VetoGuardianSet @entity(immutable: true) {
   id: Bytes!
   oldGuardian: Bytes! # address
   newGuardian: Bytes! # address
@@ -99,7 +110,7 @@ type GovernorBravoDelegatorVetoGuardianSet @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorVoteCast @entity(immutable: true) {
+type VoteCast @entity(immutable: true) {
   id: Bytes!
   voter: Bytes! # address
   proposalId: BigInt! # uint256
@@ -111,7 +122,7 @@ type GovernorBravoDelegatorVoteCast @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorVotingDelaySet @entity(immutable: true) {
+type VotingDelaySet @entity(immutable: true) {
   id: Bytes!
   oldVotingDelay: BigInt! # uint256
   newVotingDelay: BigInt! # uint256
@@ -120,7 +131,7 @@ type GovernorBravoDelegatorVotingDelaySet @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorVotingPeriodSet @entity(immutable: true) {
+type VotingPeriodSet @entity(immutable: true) {
   id: Bytes!
   oldVotingPeriod: BigInt! # uint256
   newVotingPeriod: BigInt! # uint256
@@ -129,7 +140,7 @@ type GovernorBravoDelegatorVotingPeriodSet @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorWhitelistAccountExpirationSet
+type WhitelistAccountExpirationSet
   @entity(immutable: true) {
   id: Bytes!
   account: Bytes! # address
@@ -139,7 +150,7 @@ type GovernorBravoDelegatorWhitelistAccountExpirationSet
   transactionHash: Bytes!
 }
 
-type GovernorBravoDelegatorWhitelistGuardianSet @entity(immutable: true) {
+type WhitelistGuardianSet @entity(immutable: true) {
   id: Bytes!
   oldGuardian: Bytes! # address
   newGuardian: Bytes! # address

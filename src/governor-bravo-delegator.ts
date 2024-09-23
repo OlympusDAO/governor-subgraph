@@ -1,3 +1,4 @@
+import { BigInt, Bytes } from "@graphprotocol/graph-ts"
 import {
   NewAdmin as NewAdminEvent,
   NewImplementation as NewImplementationEvent,
@@ -77,15 +78,26 @@ export function handleNewPendingAdmin(event: NewPendingAdminEvent): void {
   entity.save()
 }
 
+function _assertProposalExists(id: BigInt): void {
+  let proposal = ProposalCreated.load(Bytes.fromI32(id.toI32()));
+
+  if (!proposal) {
+    throw new Error("Proposal not found with id: " + id.toString());
+  }
+}
+
 export function handleProposalCanceled(event: ProposalCanceledEvent): void {
   let entity = new ProposalCanceled(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
+
+  _assertProposalExists(event.params.id);
+  entity.proposal = Bytes.fromI32(event.params.id.toI32());
 
   entity.save()
 }
@@ -94,9 +106,9 @@ export function handleProposalCreated(event: ProposalCreatedEvent): void {
   let entity = new ProposalCreated(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
   entity.proposer = event.params.proposer
-  entity.targets = event.params.targets
+  entity.targets = event.params.targets.map<Bytes>((target: Bytes) => target);
   entity.values = event.params.values
   entity.signatures = event.params.signatures
   entity.calldatas = event.params.calldatas
@@ -114,11 +126,14 @@ export function handleProposalExecuted(event: ProposalExecutedEvent): void {
   let entity = new ProposalExecuted(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
+
+  _assertProposalExists(event.params.id);
+  entity.proposal = Bytes.fromI32(event.params.id.toI32());
 
   entity.save()
 }
@@ -127,12 +142,15 @@ export function handleProposalQueued(event: ProposalQueuedEvent): void {
   let entity = new ProposalQueued(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
   entity.eta = event.params.eta
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
+
+  _assertProposalExists(event.params.id);
+  entity.proposal = Bytes.fromI32(event.params.id.toI32());
 
   entity.save()
 }
@@ -157,11 +175,14 @@ export function handleProposalVetoed(event: ProposalVetoedEvent): void {
   let entity = new ProposalVetoed(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
+
+  _assertProposalExists(event.params.id);
+  entity.proposal = Bytes.fromI32(event.params.id.toI32());
 
   entity.save()
 }
@@ -172,11 +193,14 @@ export function handleProposalVotingStarted(
   let entity = new ProposalVotingStarted(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  entity.GovernorBravoDelegator_id = event.params.id
+  entity.proposalId = event.params.id
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
   entity.transactionHash = event.transaction.hash
+
+  _assertProposalExists(event.params.id);
+  entity.proposal = Bytes.fromI32(event.params.id.toI32());
 
   entity.save()
 }

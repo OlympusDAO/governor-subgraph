@@ -11,7 +11,7 @@ import {
   BigDecimal,
 } from "@graphprotocol/graph-ts";
 
-export class GovernorBravoDelegatorNewAdmin extends Entity {
+export class NewAdmin extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -19,33 +19,24 @@ export class GovernorBravoDelegatorNewAdmin extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorNewAdmin entity without an ID",
-    );
+    assert(id != null, "Cannot save NewAdmin entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorNewAdmin must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type NewAdmin must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorNewAdmin",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("NewAdmin", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorNewAdmin | null {
-    return changetype<GovernorBravoDelegatorNewAdmin | null>(
-      store.get_in_block("GovernorBravoDelegatorNewAdmin", id.toHexString()),
+  static loadInBlock(id: Bytes): NewAdmin | null {
+    return changetype<NewAdmin | null>(
+      store.get_in_block("NewAdmin", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorNewAdmin | null {
-    return changetype<GovernorBravoDelegatorNewAdmin | null>(
-      store.get("GovernorBravoDelegatorNewAdmin", id.toHexString()),
-    );
+  static load(id: Bytes): NewAdmin | null {
+    return changetype<NewAdmin | null>(store.get("NewAdmin", id.toHexString()));
   }
 
   get id(): Bytes {
@@ -127,7 +118,7 @@ export class GovernorBravoDelegatorNewAdmin extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorNewImplementation extends Entity {
+export class NewImplementation extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -135,37 +126,25 @@ export class GovernorBravoDelegatorNewImplementation extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorNewImplementation entity without an ID",
-    );
+    assert(id != null, "Cannot save NewImplementation entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorNewImplementation must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type NewImplementation must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorNewImplementation",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("NewImplementation", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(
-    id: Bytes,
-  ): GovernorBravoDelegatorNewImplementation | null {
-    return changetype<GovernorBravoDelegatorNewImplementation | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorNewImplementation",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): NewImplementation | null {
+    return changetype<NewImplementation | null>(
+      store.get_in_block("NewImplementation", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorNewImplementation | null {
-    return changetype<GovernorBravoDelegatorNewImplementation | null>(
-      store.get("GovernorBravoDelegatorNewImplementation", id.toHexString()),
+  static load(id: Bytes): NewImplementation | null {
+    return changetype<NewImplementation | null>(
+      store.get("NewImplementation", id.toHexString()),
     );
   }
 
@@ -248,7 +227,7 @@ export class GovernorBravoDelegatorNewImplementation extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorNewPendingAdmin extends Entity {
+export class NewPendingAdmin extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -256,35 +235,25 @@ export class GovernorBravoDelegatorNewPendingAdmin extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorNewPendingAdmin entity without an ID",
-    );
+    assert(id != null, "Cannot save NewPendingAdmin entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorNewPendingAdmin must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type NewPendingAdmin must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorNewPendingAdmin",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("NewPendingAdmin", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorNewPendingAdmin | null {
-    return changetype<GovernorBravoDelegatorNewPendingAdmin | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorNewPendingAdmin",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): NewPendingAdmin | null {
+    return changetype<NewPendingAdmin | null>(
+      store.get_in_block("NewPendingAdmin", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorNewPendingAdmin | null {
-    return changetype<GovernorBravoDelegatorNewPendingAdmin | null>(
-      store.get("GovernorBravoDelegatorNewPendingAdmin", id.toHexString()),
+  static load(id: Bytes): NewPendingAdmin | null {
+    return changetype<NewPendingAdmin | null>(
+      store.get("NewPendingAdmin", id.toHexString()),
     );
   }
 
@@ -367,7 +336,7 @@ export class GovernorBravoDelegatorNewPendingAdmin extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorProposalCanceled extends Entity {
+export class ProposalCanceled extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -375,35 +344,25 @@ export class GovernorBravoDelegatorProposalCanceled extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalCanceled entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalCanceled entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalCanceled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalCanceled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalCanceled",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalCanceled", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorProposalCanceled | null {
-    return changetype<GovernorBravoDelegatorProposalCanceled | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalCanceled",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalCanceled | null {
+    return changetype<ProposalCanceled | null>(
+      store.get_in_block("ProposalCanceled", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalCanceled | null {
-    return changetype<GovernorBravoDelegatorProposalCanceled | null>(
-      store.get("GovernorBravoDelegatorProposalCanceled", id.toHexString()),
+  static load(id: Bytes): ProposalCanceled | null {
+    return changetype<ProposalCanceled | null>(
+      store.get("ProposalCanceled", id.toHexString()),
     );
   }
 
@@ -420,8 +379,8 @@ export class GovernorBravoDelegatorProposalCanceled extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -429,8 +388,8 @@ export class GovernorBravoDelegatorProposalCanceled extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get blockNumber(): BigInt {
@@ -471,9 +430,22 @@ export class GovernorBravoDelegatorProposalCanceled extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get proposal(): Bytes {
+    let value = this.get("proposal");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set proposal(value: Bytes) {
+    this.set("proposal", Value.fromBytes(value));
+  }
 }
 
-export class GovernorBravoDelegatorProposalCreated extends Entity {
+export class ProposalCreated extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -481,35 +453,25 @@ export class GovernorBravoDelegatorProposalCreated extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalCreated entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalCreated entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalCreated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalCreated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalCreated",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalCreated", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorProposalCreated | null {
-    return changetype<GovernorBravoDelegatorProposalCreated | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalCreated",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalCreated | null {
+    return changetype<ProposalCreated | null>(
+      store.get_in_block("ProposalCreated", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalCreated | null {
-    return changetype<GovernorBravoDelegatorProposalCreated | null>(
-      store.get("GovernorBravoDelegatorProposalCreated", id.toHexString()),
+  static load(id: Bytes): ProposalCreated | null {
+    return changetype<ProposalCreated | null>(
+      store.get("ProposalCreated", id.toHexString()),
     );
   }
 
@@ -526,8 +488,8 @@ export class GovernorBravoDelegatorProposalCreated extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -535,8 +497,8 @@ export class GovernorBravoDelegatorProposalCreated extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get proposer(): Bytes {
@@ -668,9 +630,49 @@ export class GovernorBravoDelegatorProposalCreated extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get cancelled(): ProposalCanceledLoader {
+    return new ProposalCanceledLoader(
+      "ProposalCreated",
+      this.get("id")!.toBytes().toHexString(),
+      "cancelled",
+    );
+  }
+
+  get executed(): ProposalExecutedLoader {
+    return new ProposalExecutedLoader(
+      "ProposalCreated",
+      this.get("id")!.toBytes().toHexString(),
+      "executed",
+    );
+  }
+
+  get queued(): ProposalQueuedLoader {
+    return new ProposalQueuedLoader(
+      "ProposalCreated",
+      this.get("id")!.toBytes().toHexString(),
+      "queued",
+    );
+  }
+
+  get vetoed(): ProposalVetoedLoader {
+    return new ProposalVetoedLoader(
+      "ProposalCreated",
+      this.get("id")!.toBytes().toHexString(),
+      "vetoed",
+    );
+  }
+
+  get votingStarted(): ProposalVotingStartedLoader {
+    return new ProposalVotingStartedLoader(
+      "ProposalCreated",
+      this.get("id")!.toBytes().toHexString(),
+      "votingStarted",
+    );
+  }
 }
 
-export class GovernorBravoDelegatorProposalExecuted extends Entity {
+export class ProposalExecuted extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -678,35 +680,25 @@ export class GovernorBravoDelegatorProposalExecuted extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalExecuted entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalExecuted entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalExecuted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalExecuted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalExecuted",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalExecuted", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorProposalExecuted | null {
-    return changetype<GovernorBravoDelegatorProposalExecuted | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalExecuted",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalExecuted | null {
+    return changetype<ProposalExecuted | null>(
+      store.get_in_block("ProposalExecuted", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalExecuted | null {
-    return changetype<GovernorBravoDelegatorProposalExecuted | null>(
-      store.get("GovernorBravoDelegatorProposalExecuted", id.toHexString()),
+  static load(id: Bytes): ProposalExecuted | null {
+    return changetype<ProposalExecuted | null>(
+      store.get("ProposalExecuted", id.toHexString()),
     );
   }
 
@@ -723,8 +715,8 @@ export class GovernorBravoDelegatorProposalExecuted extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -732,8 +724,8 @@ export class GovernorBravoDelegatorProposalExecuted extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get blockNumber(): BigInt {
@@ -774,9 +766,22 @@ export class GovernorBravoDelegatorProposalExecuted extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get proposal(): Bytes {
+    let value = this.get("proposal");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set proposal(value: Bytes) {
+    this.set("proposal", Value.fromBytes(value));
+  }
 }
 
-export class GovernorBravoDelegatorProposalQueued extends Entity {
+export class ProposalQueued extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -784,35 +789,25 @@ export class GovernorBravoDelegatorProposalQueued extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalQueued entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalQueued entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalQueued must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalQueued must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalQueued",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalQueued", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorProposalQueued | null {
-    return changetype<GovernorBravoDelegatorProposalQueued | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalQueued",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalQueued | null {
+    return changetype<ProposalQueued | null>(
+      store.get_in_block("ProposalQueued", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalQueued | null {
-    return changetype<GovernorBravoDelegatorProposalQueued | null>(
-      store.get("GovernorBravoDelegatorProposalQueued", id.toHexString()),
+  static load(id: Bytes): ProposalQueued | null {
+    return changetype<ProposalQueued | null>(
+      store.get("ProposalQueued", id.toHexString()),
     );
   }
 
@@ -829,8 +824,8 @@ export class GovernorBravoDelegatorProposalQueued extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -838,8 +833,8 @@ export class GovernorBravoDelegatorProposalQueued extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get eta(): BigInt {
@@ -893,9 +888,22 @@ export class GovernorBravoDelegatorProposalQueued extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get proposal(): Bytes {
+    let value = this.get("proposal");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set proposal(value: Bytes) {
+    this.set("proposal", Value.fromBytes(value));
+  }
 }
 
-export class GovernorBravoDelegatorProposalThresholdSet extends Entity {
+export class ProposalThresholdSet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -903,37 +911,25 @@ export class GovernorBravoDelegatorProposalThresholdSet extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalThresholdSet entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalThresholdSet entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalThresholdSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalThresholdSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalThresholdSet",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalThresholdSet", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(
-    id: Bytes,
-  ): GovernorBravoDelegatorProposalThresholdSet | null {
-    return changetype<GovernorBravoDelegatorProposalThresholdSet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalThresholdSet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalThresholdSet | null {
+    return changetype<ProposalThresholdSet | null>(
+      store.get_in_block("ProposalThresholdSet", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalThresholdSet | null {
-    return changetype<GovernorBravoDelegatorProposalThresholdSet | null>(
-      store.get("GovernorBravoDelegatorProposalThresholdSet", id.toHexString()),
+  static load(id: Bytes): ProposalThresholdSet | null {
+    return changetype<ProposalThresholdSet | null>(
+      store.get("ProposalThresholdSet", id.toHexString()),
     );
   }
 
@@ -1016,7 +1012,7 @@ export class GovernorBravoDelegatorProposalThresholdSet extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorProposalVetoed extends Entity {
+export class ProposalVetoed extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1024,35 +1020,25 @@ export class GovernorBravoDelegatorProposalVetoed extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorProposalVetoed entity without an ID",
-    );
+    assert(id != null, "Cannot save ProposalVetoed entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalVetoed must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalVetoed must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalVetoed",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalVetoed", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorProposalVetoed | null {
-    return changetype<GovernorBravoDelegatorProposalVetoed | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalVetoed",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalVetoed | null {
+    return changetype<ProposalVetoed | null>(
+      store.get_in_block("ProposalVetoed", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalVetoed | null {
-    return changetype<GovernorBravoDelegatorProposalVetoed | null>(
-      store.get("GovernorBravoDelegatorProposalVetoed", id.toHexString()),
+  static load(id: Bytes): ProposalVetoed | null {
+    return changetype<ProposalVetoed | null>(
+      store.get("ProposalVetoed", id.toHexString()),
     );
   }
 
@@ -1069,8 +1055,8 @@ export class GovernorBravoDelegatorProposalVetoed extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -1078,8 +1064,8 @@ export class GovernorBravoDelegatorProposalVetoed extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get blockNumber(): BigInt {
@@ -1120,9 +1106,22 @@ export class GovernorBravoDelegatorProposalVetoed extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get proposal(): Bytes {
+    let value = this.get("proposal");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set proposal(value: Bytes) {
+    this.set("proposal", Value.fromBytes(value));
+  }
 }
 
-export class GovernorBravoDelegatorProposalVotingStarted extends Entity {
+export class ProposalVotingStarted extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1132,38 +1131,26 @@ export class GovernorBravoDelegatorProposalVotingStarted extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save GovernorBravoDelegatorProposalVotingStarted entity without an ID",
+      "Cannot save ProposalVotingStarted entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorProposalVotingStarted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type ProposalVotingStarted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorProposalVotingStarted",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("ProposalVotingStarted", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(
-    id: Bytes,
-  ): GovernorBravoDelegatorProposalVotingStarted | null {
-    return changetype<GovernorBravoDelegatorProposalVotingStarted | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorProposalVotingStarted",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): ProposalVotingStarted | null {
+    return changetype<ProposalVotingStarted | null>(
+      store.get_in_block("ProposalVotingStarted", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorProposalVotingStarted | null {
-    return changetype<GovernorBravoDelegatorProposalVotingStarted | null>(
-      store.get(
-        "GovernorBravoDelegatorProposalVotingStarted",
-        id.toHexString(),
-      ),
+  static load(id: Bytes): ProposalVotingStarted | null {
+    return changetype<ProposalVotingStarted | null>(
+      store.get("ProposalVotingStarted", id.toHexString()),
     );
   }
 
@@ -1180,8 +1167,8 @@ export class GovernorBravoDelegatorProposalVotingStarted extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get GovernorBravoDelegator_id(): BigInt {
-    let value = this.get("GovernorBravoDelegator_id");
+  get proposalId(): BigInt {
+    let value = this.get("proposalId");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -1189,8 +1176,8 @@ export class GovernorBravoDelegatorProposalVotingStarted extends Entity {
     }
   }
 
-  set GovernorBravoDelegator_id(value: BigInt) {
-    this.set("GovernorBravoDelegator_id", Value.fromBigInt(value));
+  set proposalId(value: BigInt) {
+    this.set("proposalId", Value.fromBigInt(value));
   }
 
   get blockNumber(): BigInt {
@@ -1231,9 +1218,22 @@ export class GovernorBravoDelegatorProposalVotingStarted extends Entity {
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+
+  get proposal(): Bytes {
+    let value = this.get("proposal");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set proposal(value: Bytes) {
+    this.set("proposal", Value.fromBytes(value));
+  }
 }
 
-export class GovernorBravoDelegatorVetoGuardianSet extends Entity {
+export class VetoGuardianSet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1241,35 +1241,25 @@ export class GovernorBravoDelegatorVetoGuardianSet extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorVetoGuardianSet entity without an ID",
-    );
+    assert(id != null, "Cannot save VetoGuardianSet entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorVetoGuardianSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type VetoGuardianSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorVetoGuardianSet",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("VetoGuardianSet", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorVetoGuardianSet | null {
-    return changetype<GovernorBravoDelegatorVetoGuardianSet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorVetoGuardianSet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): VetoGuardianSet | null {
+    return changetype<VetoGuardianSet | null>(
+      store.get_in_block("VetoGuardianSet", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorVetoGuardianSet | null {
-    return changetype<GovernorBravoDelegatorVetoGuardianSet | null>(
-      store.get("GovernorBravoDelegatorVetoGuardianSet", id.toHexString()),
+  static load(id: Bytes): VetoGuardianSet | null {
+    return changetype<VetoGuardianSet | null>(
+      store.get("VetoGuardianSet", id.toHexString()),
     );
   }
 
@@ -1352,7 +1342,7 @@ export class GovernorBravoDelegatorVetoGuardianSet extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorVoteCast extends Entity {
+export class VoteCast extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1360,33 +1350,24 @@ export class GovernorBravoDelegatorVoteCast extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorVoteCast entity without an ID",
-    );
+    assert(id != null, "Cannot save VoteCast entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorVoteCast must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type VoteCast must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorVoteCast",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("VoteCast", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorVoteCast | null {
-    return changetype<GovernorBravoDelegatorVoteCast | null>(
-      store.get_in_block("GovernorBravoDelegatorVoteCast", id.toHexString()),
+  static loadInBlock(id: Bytes): VoteCast | null {
+    return changetype<VoteCast | null>(
+      store.get_in_block("VoteCast", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorVoteCast | null {
-    return changetype<GovernorBravoDelegatorVoteCast | null>(
-      store.get("GovernorBravoDelegatorVoteCast", id.toHexString()),
-    );
+  static load(id: Bytes): VoteCast | null {
+    return changetype<VoteCast | null>(store.get("VoteCast", id.toHexString()));
   }
 
   get id(): Bytes {
@@ -1507,7 +1488,7 @@ export class GovernorBravoDelegatorVoteCast extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorVotingDelaySet extends Entity {
+export class VotingDelaySet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1515,35 +1496,25 @@ export class GovernorBravoDelegatorVotingDelaySet extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorVotingDelaySet entity without an ID",
-    );
+    assert(id != null, "Cannot save VotingDelaySet entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorVotingDelaySet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type VotingDelaySet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorVotingDelaySet",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("VotingDelaySet", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorVotingDelaySet | null {
-    return changetype<GovernorBravoDelegatorVotingDelaySet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorVotingDelaySet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): VotingDelaySet | null {
+    return changetype<VotingDelaySet | null>(
+      store.get_in_block("VotingDelaySet", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorVotingDelaySet | null {
-    return changetype<GovernorBravoDelegatorVotingDelaySet | null>(
-      store.get("GovernorBravoDelegatorVotingDelaySet", id.toHexString()),
+  static load(id: Bytes): VotingDelaySet | null {
+    return changetype<VotingDelaySet | null>(
+      store.get("VotingDelaySet", id.toHexString()),
     );
   }
 
@@ -1626,7 +1597,7 @@ export class GovernorBravoDelegatorVotingDelaySet extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorVotingPeriodSet extends Entity {
+export class VotingPeriodSet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1634,35 +1605,25 @@ export class GovernorBravoDelegatorVotingPeriodSet extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorVotingPeriodSet entity without an ID",
-    );
+    assert(id != null, "Cannot save VotingPeriodSet entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorVotingPeriodSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type VotingPeriodSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorVotingPeriodSet",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("VotingPeriodSet", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): GovernorBravoDelegatorVotingPeriodSet | null {
-    return changetype<GovernorBravoDelegatorVotingPeriodSet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorVotingPeriodSet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): VotingPeriodSet | null {
+    return changetype<VotingPeriodSet | null>(
+      store.get_in_block("VotingPeriodSet", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorVotingPeriodSet | null {
-    return changetype<GovernorBravoDelegatorVotingPeriodSet | null>(
-      store.get("GovernorBravoDelegatorVotingPeriodSet", id.toHexString()),
+  static load(id: Bytes): VotingPeriodSet | null {
+    return changetype<VotingPeriodSet | null>(
+      store.get("VotingPeriodSet", id.toHexString()),
     );
   }
 
@@ -1745,7 +1706,7 @@ export class GovernorBravoDelegatorVotingPeriodSet extends Entity {
   }
 }
 
-export class GovernorBravoDelegatorWhitelistAccountExpirationSet extends Entity {
+export class WhitelistAccountExpirationSet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1755,40 +1716,30 @@ export class GovernorBravoDelegatorWhitelistAccountExpirationSet extends Entity 
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save GovernorBravoDelegatorWhitelistAccountExpirationSet entity without an ID",
+      "Cannot save WhitelistAccountExpirationSet entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorWhitelistAccountExpirationSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type WhitelistAccountExpirationSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set(
-        "GovernorBravoDelegatorWhitelistAccountExpirationSet",
+        "WhitelistAccountExpirationSet",
         id.toBytes().toHexString(),
         this,
       );
     }
   }
 
-  static loadInBlock(
-    id: Bytes,
-  ): GovernorBravoDelegatorWhitelistAccountExpirationSet | null {
-    return changetype<GovernorBravoDelegatorWhitelistAccountExpirationSet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorWhitelistAccountExpirationSet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): WhitelistAccountExpirationSet | null {
+    return changetype<WhitelistAccountExpirationSet | null>(
+      store.get_in_block("WhitelistAccountExpirationSet", id.toHexString()),
     );
   }
 
-  static load(
-    id: Bytes,
-  ): GovernorBravoDelegatorWhitelistAccountExpirationSet | null {
-    return changetype<GovernorBravoDelegatorWhitelistAccountExpirationSet | null>(
-      store.get(
-        "GovernorBravoDelegatorWhitelistAccountExpirationSet",
-        id.toHexString(),
-      ),
+  static load(id: Bytes): WhitelistAccountExpirationSet | null {
+    return changetype<WhitelistAccountExpirationSet | null>(
+      store.get("WhitelistAccountExpirationSet", id.toHexString()),
     );
   }
 
@@ -1871,7 +1822,7 @@ export class GovernorBravoDelegatorWhitelistAccountExpirationSet extends Entity 
   }
 }
 
-export class GovernorBravoDelegatorWhitelistGuardianSet extends Entity {
+export class WhitelistGuardianSet extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1879,37 +1830,25 @@ export class GovernorBravoDelegatorWhitelistGuardianSet extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save GovernorBravoDelegatorWhitelistGuardianSet entity without an ID",
-    );
+    assert(id != null, "Cannot save WhitelistGuardianSet entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type GovernorBravoDelegatorWhitelistGuardianSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type WhitelistGuardianSet must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set(
-        "GovernorBravoDelegatorWhitelistGuardianSet",
-        id.toBytes().toHexString(),
-        this,
-      );
+      store.set("WhitelistGuardianSet", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(
-    id: Bytes,
-  ): GovernorBravoDelegatorWhitelistGuardianSet | null {
-    return changetype<GovernorBravoDelegatorWhitelistGuardianSet | null>(
-      store.get_in_block(
-        "GovernorBravoDelegatorWhitelistGuardianSet",
-        id.toHexString(),
-      ),
+  static loadInBlock(id: Bytes): WhitelistGuardianSet | null {
+    return changetype<WhitelistGuardianSet | null>(
+      store.get_in_block("WhitelistGuardianSet", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): GovernorBravoDelegatorWhitelistGuardianSet | null {
-    return changetype<GovernorBravoDelegatorWhitelistGuardianSet | null>(
-      store.get("GovernorBravoDelegatorWhitelistGuardianSet", id.toHexString()),
+  static load(id: Bytes): WhitelistGuardianSet | null {
+    return changetype<WhitelistGuardianSet | null>(
+      store.get("WhitelistGuardianSet", id.toHexString()),
     );
   }
 
@@ -1989,5 +1928,95 @@ export class GovernorBravoDelegatorWhitelistGuardianSet extends Entity {
 
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class ProposalCanceledLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): ProposalCanceled[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<ProposalCanceled[]>(value);
+  }
+}
+
+export class ProposalExecutedLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): ProposalExecuted[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<ProposalExecuted[]>(value);
+  }
+}
+
+export class ProposalQueuedLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): ProposalQueued[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<ProposalQueued[]>(value);
+  }
+}
+
+export class ProposalVetoedLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): ProposalVetoed[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<ProposalVetoed[]>(value);
+  }
+}
+
+export class ProposalVotingStartedLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): ProposalVotingStarted[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<ProposalVotingStarted[]>(value);
   }
 }
