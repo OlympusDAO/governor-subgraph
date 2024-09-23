@@ -140,8 +140,7 @@ type VotingPeriodSet @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type WhitelistAccountExpirationSet
-  @entity(immutable: true) {
+type WhitelistAccountExpirationSet @entity(immutable: true) {
   id: Bytes!
   account: Bytes! # address
   expiration: BigInt! # uint256
