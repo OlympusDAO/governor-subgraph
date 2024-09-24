@@ -15,7 +15,7 @@
   "scripts": {
     "codegen": "graph codegen && prettier --write generated/",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ olympus-governor",
+    "deploy": "GRAPH_VERSION_LABEL=$(cat .subgraph-version) && source .env && graph deploy --node https://api.studio.thegraph.com/deploy/ --deploy-key $GRAPH_DEPLOY_KEY --version-label $GRAPH_VERSION_LABEL olympus-governor",
     "test": "graph test",
     "lint": "prettier --write ."
   }
