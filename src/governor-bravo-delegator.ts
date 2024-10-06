@@ -104,7 +104,7 @@ export function handleProposalCanceled(event: ProposalCanceledEvent): void {
 
 export function handleProposalCreated(event: ProposalCreatedEvent): void {
   let entity = new ProposalCreated(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    Bytes.fromI32(event.params.id.toI32()),
   );
   entity.proposalId = event.params.id;
   entity.proposer = event.params.proposer;
