@@ -79,7 +79,7 @@ export function handleNewPendingAdmin(event: NewPendingAdminEvent): void {
 }
 
 function _assertProposalExists(id: BigInt): void {
-  let proposal = ProposalCreated.load(Bytes.fromI32(id.toI32()));
+  let proposal = ProposalCreated.load(id.toString());
 
   if (!proposal) {
     throw new Error("Proposal not found with id: " + id.toString());
@@ -87,9 +87,7 @@ function _assertProposalExists(id: BigInt): void {
 }
 
 export function handleProposalCanceled(event: ProposalCanceledEvent): void {
-  let entity = new ProposalCanceled(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
+  let entity = new ProposalCanceled(event.params.id.toString());
   entity.proposalId = event.params.id;
 
   entity.blockNumber = event.block.number;
@@ -97,15 +95,13 @@ export function handleProposalCanceled(event: ProposalCanceledEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   _assertProposalExists(event.params.id);
-  entity.proposal = Bytes.fromI32(event.params.id.toI32());
+  entity.proposal = event.params.id.toString();
 
   entity.save();
 }
 
 export function handleProposalCreated(event: ProposalCreatedEvent): void {
-  let entity = new ProposalCreated(
-    Bytes.fromI32(event.params.id.toI32()),
-  );
+  let entity = new ProposalCreated(event.params.id.toString());
   entity.proposalId = event.params.id;
   entity.proposer = event.params.proposer;
   entity.targets = event.params.targets.map<Bytes>((target: Bytes) => target);
@@ -123,9 +119,7 @@ export function handleProposalCreated(event: ProposalCreatedEvent): void {
 }
 
 export function handleProposalExecuted(event: ProposalExecutedEvent): void {
-  let entity = new ProposalExecuted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
+  let entity = new ProposalExecuted(event.params.id.toString());
   entity.proposalId = event.params.id;
 
   entity.blockNumber = event.block.number;
@@ -133,15 +127,13 @@ export function handleProposalExecuted(event: ProposalExecutedEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   _assertProposalExists(event.params.id);
-  entity.proposal = Bytes.fromI32(event.params.id.toI32());
+  entity.proposal = event.params.id.toString();
 
   entity.save();
 }
 
 export function handleProposalQueued(event: ProposalQueuedEvent): void {
-  let entity = new ProposalQueued(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
+  let entity = new ProposalQueued(event.params.id.toString());
   entity.proposalId = event.params.id;
   entity.eta = event.params.eta;
 
@@ -150,7 +142,7 @@ export function handleProposalQueued(event: ProposalQueuedEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   _assertProposalExists(event.params.id);
-  entity.proposal = Bytes.fromI32(event.params.id.toI32());
+  entity.proposal = event.params.id.toString();
 
   entity.save();
 }
@@ -172,9 +164,7 @@ export function handleProposalThresholdSet(
 }
 
 export function handleProposalVetoed(event: ProposalVetoedEvent): void {
-  let entity = new ProposalVetoed(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
+  let entity = new ProposalVetoed(event.params.id.toString());
   entity.proposalId = event.params.id;
 
   entity.blockNumber = event.block.number;
@@ -182,7 +172,7 @@ export function handleProposalVetoed(event: ProposalVetoedEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   _assertProposalExists(event.params.id);
-  entity.proposal = Bytes.fromI32(event.params.id.toI32());
+  entity.proposal = event.params.id.toString();
 
   entity.save();
 }
@@ -190,9 +180,7 @@ export function handleProposalVetoed(event: ProposalVetoedEvent): void {
 export function handleProposalVotingStarted(
   event: ProposalVotingStartedEvent,
 ): void {
-  let entity = new ProposalVotingStarted(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
+  let entity = new ProposalVotingStarted(event.params.id.toString());
   entity.proposalId = event.params.id;
 
   entity.blockNumber = event.block.number;
@@ -200,7 +188,7 @@ export function handleProposalVotingStarted(
   entity.transactionHash = event.transaction.hash;
 
   _assertProposalExists(event.params.id);
-  entity.proposal = Bytes.fromI32(event.params.id.toI32());
+  entity.proposal = event.params.id.toString();
 
   entity.save();
 }
@@ -221,7 +209,7 @@ export function handleVetoGuardianSet(event: VetoGuardianSetEvent): void {
 
 export function handleVoteCast(event: VoteCastEvent): void {
   let entity = new VoteCast(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    `${event.params.proposalId.toString()}-${event.params.voter.toHexString()}-${event.transaction.hash.toHexString()}-${event.logIndex.toI32()}`,
   );
   entity.voter = event.params.voter;
   entity.proposalId = event.params.proposalId;
@@ -232,6 +220,9 @@ export function handleVoteCast(event: VoteCastEvent): void {
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
   entity.transactionHash = event.transaction.hash;
+
+  _assertProposalExists(event.params.proposalId);
+  entity.proposal = event.params.proposalId.toString();
 
   entity.save();
 }
