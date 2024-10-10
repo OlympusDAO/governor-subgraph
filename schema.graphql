@@ -26,7 +26,14 @@ type NewPendingAdmin @entity(immutable: true) {
 }
 
 type ProposalCanceled @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  A proposal can only be cancelled once, so the record ID can be the proposal ID and not have any clashes.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -35,7 +42,12 @@ type ProposalCanceled @entity(immutable: true) {
 }
 
 type ProposalCreated @entity(immutable: true) {
-  id: Bytes! # proposalId
+  """
+  Record ID.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   proposer: Bytes! # address
   targets: [Bytes!]! # address[]
@@ -53,10 +65,18 @@ type ProposalCreated @entity(immutable: true) {
   queued: ProposalQueued @derivedFrom(field: "proposal")
   vetoed: ProposalVetoed @derivedFrom(field: "proposal")
   votingStarted: ProposalVotingStarted @derivedFrom(field: "proposal")
+  votes: [VoteCast!] @derivedFrom(field: "proposal")
 }
 
 type ProposalExecuted @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  A proposal can only be executed once, so the record ID can be the proposal ID and not have any clashes.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -65,7 +85,14 @@ type ProposalExecuted @entity(immutable: true) {
 }
 
 type ProposalQueued @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  A proposal can only be queued once, so the record ID can be the proposal ID and not have any clashes.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   eta: BigInt! # uint256
   blockNumber: BigInt!
@@ -84,7 +111,14 @@ type ProposalThresholdSet @entity(immutable: true) {
 }
 
 type ProposalVetoed @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  A proposal can only be vetoed once, so the record ID can be the proposal ID and not have any clashes.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -93,7 +127,14 @@ type ProposalVetoed @entity(immutable: true) {
 }
 
 type ProposalVotingStarted @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  A proposal can only have voting started once, so the record ID can be the proposal ID and not have any clashes.
+
+  Format: `{proposalId}`
+  """
+  id: String!
   proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -111,7 +152,12 @@ type VetoGuardianSet @entity(immutable: true) {
 }
 
 type VoteCast @entity(immutable: true) {
-  id: Bytes!
+  """
+  Record ID.
+
+  Format: `{proposalId}-{voter}-{transactionHash}-{logIndex}`
+  """
+  id: String!
   voter: Bytes! # address
   proposalId: BigInt! # uint256
   support: Int! # uint8
@@ -120,6 +166,7 @@ type VoteCast @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  proposal: ProposalCreated!
 }
 
 type VotingDelaySet @entity(immutable: true) {
