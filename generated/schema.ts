@@ -295,6 +295,14 @@ export class VoterVotingPowerSnapshot extends Entity {
       "event",
     );
   }
+
+  get coolerDelegations(): CoolerDelegationEventLoader {
+    return new CoolerDelegationEventLoader(
+      "VoterVotingPowerSnapshot",
+      this.get("id")!.toBytes().toHexString(),
+      "coolerDelegations",
+    );
+  }
 }
 
 export class NewAdmin extends Entity {
@@ -2495,6 +2503,365 @@ export class DelegateVotesChanged extends Entity {
   }
 }
 
+export class CoolerDelegateEscrow extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save CoolerDelegateEscrow entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CoolerDelegateEscrow must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("CoolerDelegateEscrow", id.toBytes().toHexString(), this);
+    }
+  }
+
+  static loadInBlock(id: Bytes): CoolerDelegateEscrow | null {
+    return changetype<CoolerDelegateEscrow | null>(
+      store.get_in_block("CoolerDelegateEscrow", id.toHexString()),
+    );
+  }
+
+  static load(id: Bytes): CoolerDelegateEscrow | null {
+    return changetype<CoolerDelegateEscrow | null>(
+      store.get("CoolerDelegateEscrow", id.toHexString()),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get escrow(): Bytes {
+    let value = this.get("escrow");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set escrow(value: Bytes) {
+    this.set("escrow", Value.fromBytes(value));
+  }
+
+  get delegatee(): Bytes {
+    let value = this.get("delegatee");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set delegatee(value: Bytes) {
+    this.set("delegatee", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+}
+
+export class CoolerDelegationEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CoolerDelegationEvent entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type CoolerDelegationEvent must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("CoolerDelegationEvent", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): CoolerDelegationEvent | null {
+    return changetype<CoolerDelegationEvent | null>(
+      store.get_in_block("CoolerDelegationEvent", id),
+    );
+  }
+
+  static load(id: string): CoolerDelegationEvent | null {
+    return changetype<CoolerDelegationEvent | null>(
+      store.get("CoolerDelegationEvent", id),
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get delegator(): Bytes {
+    let value = this.get("delegator");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set delegator(value: Bytes) {
+    this.set("delegator", Value.fromBytes(value));
+  }
+
+  get delegatee(): Bytes {
+    let value = this.get("delegatee");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set delegatee(value: Bytes) {
+    this.set("delegatee", Value.fromBytes(value));
+  }
+
+  get escrow(): Bytes {
+    let value = this.get("escrow");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set escrow(value: Bytes) {
+    this.set("escrow", Value.fromBytes(value));
+  }
+
+  get amount(): BigDecimal {
+    let value = this.get("amount");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set amount(value: BigDecimal) {
+    this.set("amount", Value.fromBigDecimal(value));
+  }
+
+  get snapshot(): Bytes {
+    let value = this.get("snapshot");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set snapshot(value: Bytes) {
+    this.set("snapshot", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class CoolerDelegationBalance extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CoolerDelegationBalance entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type CoolerDelegationBalance must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("CoolerDelegationBalance", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): CoolerDelegationBalance | null {
+    return changetype<CoolerDelegationBalance | null>(
+      store.get_in_block("CoolerDelegationBalance", id),
+    );
+  }
+
+  static load(id: string): CoolerDelegationBalance | null {
+    return changetype<CoolerDelegationBalance | null>(
+      store.get("CoolerDelegationBalance", id),
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get delegator(): Bytes {
+    let value = this.get("delegator");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set delegator(value: Bytes) {
+    this.set("delegator", Value.fromBytes(value));
+  }
+
+  get delegatee(): Bytes {
+    let value = this.get("delegatee");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set delegatee(value: Bytes) {
+    this.set("delegatee", Value.fromBytes(value));
+  }
+
+  get amount(): BigDecimal {
+    let value = this.get("amount");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigDecimal();
+    }
+  }
+
+  set amount(value: BigDecimal) {
+    this.set("amount", Value.fromBigDecimal(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+}
+
 export class ProposalCreatedLoader extends Entity {
   _entity: string;
   _field: string;
@@ -2582,6 +2949,24 @@ export class DelegateVotesChangedLoader extends Entity {
   load(): DelegateVotesChanged[] {
     let value = store.loadRelated(this._entity, this._id, this._field);
     return changetype<DelegateVotesChanged[]>(value);
+  }
+}
+
+export class CoolerDelegationEventLoader extends Entity {
+  _entity: string;
+  _field: string;
+  _id: string;
+
+  constructor(entity: string, id: string, field: string) {
+    super();
+    this._entity = entity;
+    this._id = id;
+    this._field = field;
+  }
+
+  load(): CoolerDelegationEvent[] {
+    let value = store.loadRelated(this._entity, this._id, this._field);
+    return changetype<CoolerDelegationEvent[]>(value);
   }
 }
 
