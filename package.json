@@ -10,6 +10,7 @@
     "prettier": "^3.3.3"
   },
   "devDependencies": {
+    "assemblyscript": "0.19.10",
     "matchstick-as": "0.6.0"
   },
   "resolutions": {
@@ -29,6 +30,50 @@
     "deploy": "GRAPH_VERSION_LABEL=$(cat .subgraph-version) && source .env && graph deploy --node https://api.studio.thegraph.com/deploy/ --deploy-key $GRAPH_DEPLOY_KEY --version-label $GRAPH_VERSION_LABEL olympus-governor",
     "test": "graph test",
     "lint": "prettier --write .",
-    "lint:check": "prettier --check ."
+    "lint:check": "prettier --check .",
+    "preinstall": "npx only-allow@1.2.2 pnpm"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "pnpm": "10.33.0",
+    "npm": "use-pnpm",
+    "yarn": "use-pnpm"
+  },
+  "pnpm": {
+    "overrides": {
+      "@isaacs/brace-expansion": ">=5.0.1",
+      "@isaacs/brace-expansion@<=5.0.0": ">=5.0.1",
+      "axios": ">=0.30.3",
+      "brace-expansion": ">=2.0.3",
+      "immutable": ">=5.1.5",
+      "lodash": ">=4.18.0",
+      "minimatch": ">=10.2.3",
+      "picomatch": ">=4.0.4",
+      "undici": ">=7.24.0",
+      "yaml": ">=2.8.3",
+      "axios@<=0.30.2": ">=0.30.3",
+      "brace-expansion@<1.1.13": ">=1.1.13",
+      "brace-expansion@>=1.0.0 <=1.1.11": ">=1.1.12",
+      "brace-expansion@>=2.0.0 <2.0.3": ">=2.0.3",
+      "brace-expansion@>=2.0.0 <=2.0.1": ">=2.0.2",
+      "immutable@>=5.0.0 <5.1.5": ">=5.1.5",
+      "lodash@<=4.17.23": ">=4.18.0",
+      "lodash@>=4.0.0 <=4.17.23": ">=4.18.0",
+      "minimatch@<3.1.3": ">=3.1.3",
+      "minimatch@<3.1.4": ">=3.1.4",
+      "minimatch@>=10.0.0 <10.2.1": ">=10.2.1",
+      "minimatch@>=10.0.0 <10.2.3": ">=10.2.3",
+      "minimatch@>=5.0.0 <5.1.7": ">=5.1.7",
+      "minimatch@>=5.0.0 <5.1.8": ">=5.1.8",
+      "minimatch@>=9.0.0 <9.0.6": ">=9.0.6",
+      "minimatch@>=9.0.0 <9.0.7": ">=9.0.7",
+      "picomatch@<2.3.2": ">=2.3.2",
+      "picomatch@>=4.0.0 <4.0.4": ">=4.0.4",
+      "tmp@<=0.2.3": ">=0.2.4",
+      "undici@>=7.0.0 <7.24.0": ">=7.24.0",
+      "undici@>=7.17.0 <7.24.0": ">=7.24.0",
+      "yaml@>=1.0.0 <1.10.3": ">=1.10.3",
+      "yaml@>=2.0.0 <2.8.3": ">=2.8.3"
+    }
   }
 }

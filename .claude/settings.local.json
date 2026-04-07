@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn info:*)",
+      "Bash(yarn audit:*)",
+      "WebSearch",
+      "Bash(yarn test:*)",
+      "Bash(npm view:*)",
+      "Bash(npm ls:*)"
+    ]
+  }
+}
