@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository is part of the OlympusDAO organization.
+This repository contains the Olympus governor subgraph, indexing proposals, votes, delegated voting power, and proposal execution state.
 
 ## Node and Tooling
 
