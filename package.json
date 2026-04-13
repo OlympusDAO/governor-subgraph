@@ -14,7 +14,7 @@
     "matchstick-as": "0.6.0"
   },
   "resolutions": {
-    "axios": "^0.30.0",
+    "axios": "^1.15.0",
     "cross-spawn": "^7.0.5",
     "ejs": "^3.1.10",
     "glob": "^11.1.0",
@@ -35,6 +35,7 @@
   },
   "packageManager": "pnpm@10.33.0",
   "engines": {
+    "node": ">=24",
     "pnpm": "10.33.0",
     "npm": "use-pnpm",
     "yarn": "use-pnpm"
@@ -43,7 +44,9 @@
     "overrides": {
       "@isaacs/brace-expansion": ">=5.0.1",
       "@isaacs/brace-expansion@<=5.0.0": ">=5.0.1",
-      "axios": ">=0.30.3",
+      "axios": ">=1.15.0",
+      "axios@<1.15.0": ">=1.15.0",
+      "apisauce>axios": ">=1.15.0",
       "brace-expansion": ">=2.0.3",
       "immutable": ">=5.1.5",
       "lodash": ">=4.18.0",
