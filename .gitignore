@@ -36,3 +36,5 @@ tests/.bin/
 tests/.latest.json
 
 audit.json
+
+.pnpm-store/
