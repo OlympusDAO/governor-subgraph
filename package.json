@@ -19,14 +19,13 @@
     "deploy": "GRAPH_VERSION_LABEL=$(cat .subgraph-version) && source .env && graph deploy --node https://api.studio.thegraph.com/deploy/ --deploy-key $GRAPH_DEPLOY_KEY --version-label $GRAPH_VERSION_LABEL olympus-governor",
     "test": "graph test",
     "lint": "prettier --write .",
-    "lint:check": "prettier --check .",
-    "preinstall": "npx only-allow@1.2.2 pnpm"
+    "lint:check": "prettier --check ."
   },
   "engines": {
     "node": ">=24",
-    "pnpm": ">=10.33.0",
+    "pnpm": ">=11.13.0 <12",
     "npm": "use-pnpm",
     "yarn": "use-pnpm"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@11.13.0"
 }
