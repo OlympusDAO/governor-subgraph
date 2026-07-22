@@ -6,16 +6,17 @@ settings:
 
 overrides:
   "@isaacs/brace-expansion@<5.0.1": ^5.0.1
-  axios@<1.15.2: ^1.15.2
+  axios@<1.18.0: ^1.18.0
   brace-expansion@<2.0.3: ^2.0.3
+  brace-expansion@>=3.0.0 <5.0.7: ^5.0.7
   cross-spawn@<7.0.5: ^7.0.5
   "@graphprotocol/graph-cli@0.98.1>decompress@<=4.2.1": npm:@xhmikosr/decompress@^11.1.3
   ejs@<3.1.10: ^3.1.10
   follow-redirects@<1.16.0: ^1.16.0
   form-data@>=4.0.0 <4.0.6: ^4.0.6
   glob@<11.1.0: ^11.1.0
-  immutable@<5.1.5: ^5.1.5
-  js-yaml@<=4.1.1: ^4.2.0
+  immutable@>=5.0.0-beta.1 <5.1.8: ^5.1.8
+  js-yaml@>=4.0.0 <4.3.0: ^4.3.0
   lodash@<4.18.0: ^4.18.0
   lodash.trim@<4.17.21: npm:lodash@^4.17.21
   lodash.trimend@<4.17.21: npm:lodash@^4.17.21
@@ -656,6 +657,13 @@ packages:
         integrity: sha512-fxqCblJiIPdSXIUrxI0PL+eJG49QdP9SQ70qtB65MVAoMr2rASlOyAbJFOylfB467F/f+5BCLJJq58RYi7mGfg==,
       }
 
+  agent-base@6.0.2:
+    resolution:
+      {
+        integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==,
+      }
+    engines: { node: ">= 6.0.0" }
+
   ansi-colors@4.1.3:
     resolution:
       {
@@ -785,10 +793,10 @@ packages:
       }
     engines: { node: ">= 0.4" }
 
-  axios@1.16.0:
+  axios@1.18.1:
     resolution:
       {
-        integrity: sha512-6hp5CwvTPlN2A31g5dxnwAX0orzM7pmCRDLnZSX772mv8WDqICwFjowHuPs04Mc8deIld1+ejhtaMn5vp6b+1w==,
+        integrity: sha512-3nTvFlvpn9Zu/RkHUqtc7/+al4UpRW5az71ap5zccp6e8RAYEzhMTecX8Dz1wWDYrPpUoB1HAQEGEAEvUr7S9g==,
       }
 
   b4a@1.8.1:
@@ -853,10 +861,10 @@ packages:
         integrity: sha512-I39vO57y+LBEIcAV7fif0sn96fYOYVqrPiOD+53MxQGv4DBgt1/HHZh0BHheWx2hVe24q5LTSXxqeV1Y3Nzkgg==,
       }
 
-  brace-expansion@5.0.6:
+  brace-expansion@5.0.7:
     resolution:
       {
-        integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==,
+        integrity: sha512-7oFy703dxfY3/NLxC1fh2SUCQ0H9rmAY+5EpDVfXjUTTs+HEwR2nYaqLv+GWcTsumwxPfiz6CzCNkwXwBUwqCA==,
       }
     engines: { node: 18 || 20 || >=22 }
 
@@ -1566,13 +1574,6 @@ packages:
         integrity: sha512-0cMsjjIC8I+D3M44pOQdsy0OHXGLVz6Z0beRuufhKa0KfaD2wGwAev6jILzXsd3/vpnNQJmWyZtIILqM1N+n5A==,
       }
 
-  hasown@2.0.2:
-    resolution:
-      {
-        integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==,
-      }
-    engines: { node: ">= 0.4" }
-
   hasown@2.0.4:
     resolution:
       {
@@ -1586,6 +1587,13 @@ packages:
         integrity: sha512-ahwimsC23ICE4kPl9xTBjKB4inbRaeLyZeRunC/1Jy/Z6X8tv22MEAjK+KBOMSVLaqXPTTmd8638waVIKLGx2w==,
       }
     engines: { node: ">=8.0.0" }
+
+  https-proxy-agent@5.0.1:
+    resolution:
+      {
+        integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==,
+      }
+    engines: { node: ">= 6" }
 
   human-signals@2.1.0:
     resolution:
@@ -1614,10 +1622,10 @@ packages:
         integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==,
       }
 
-  immutable@5.1.5:
+  immutable@5.1.9:
     resolution:
       {
-        integrity: sha512-t7xcm2siw+hlUM68I+UEOK+z84RzmN59as9DZ7P1l0994DKUWV7UXBMQZVxaoMSRQ+PBZbHCOoBt7a2wxOMt+A==,
+        integrity: sha512-m8nVez3rwrgmWxtLMt1ZYXB2Lv7OKYn/disyxAlSDYAlKSlFoPPfIAmAM/M5xqL4m4C/wAPw7S2/CNaUii1Hxg==,
       }
 
   import-fresh@3.3.0:
@@ -1929,10 +1937,10 @@ packages:
         integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==,
       }
 
-  js-yaml@4.2.0:
+  js-yaml@4.3.0:
     resolution:
       {
-        integrity: sha512-ePWsvanv0DWuDRsW8dnt+R4jQ31SCRCQ7hhNcPXZPsoBZiemuZNYGf7adZdqX2D86j6rvKp3RpCxVTSb8WQlOw==,
+        integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==,
       }
     hasBin: true
 
@@ -3053,7 +3061,7 @@ snapshots:
       "@rescript/std": 9.0.0
       graphql: 16.11.0
       graphql-import-node: 0.0.5(graphql@16.11.0)
-      js-yaml: 4.2.0
+      js-yaml: 4.3.0
 
   "@graphprotocol/graph-cli@0.98.1(@types/node@22.5.5)(supports-color@8.1.1)(typescript@6.0.2)(zod@3.25.76)":
     dependencies:
@@ -3073,9 +3081,9 @@ snapshots:
       glob: 11.1.0
       gluegun: 5.2.0(debug@4.4.3(supports-color@8.1.1))
       graphql: 16.11.0
-      immutable: 5.1.5
+      immutable: 5.1.9
       jayson: 4.2.0
-      js-yaml: 4.2.0
+      js-yaml: 4.3.0
       kubo-rpc-client: 5.4.1(undici@7.28.0)
       open: 10.2.0
       prettier: 3.6.2
@@ -3557,6 +3565,12 @@ snapshots:
 
   abort-error@1.0.1: {}
 
+  agent-base@6.0.2:
+    dependencies:
+      debug: 4.4.3(supports-color@8.1.1)
+    transitivePeerDependencies:
+      - supports-color
+
   ansi-colors@4.1.3: {}
 
   ansi-escapes@4.3.2:
@@ -3585,9 +3599,10 @@ snapshots:
 
   apisauce@2.1.6(debug@4.4.3(supports-color@8.1.1)):
     dependencies:
-      axios: 1.16.0(debug@4.4.3(supports-color@8.1.1))
+      axios: 1.18.1(debug@4.4.3(supports-color@8.1.1))
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   app-module-path@2.2.0: {}
 
@@ -3617,13 +3632,15 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  axios@1.16.0(debug@4.4.3(supports-color@8.1.1)):
+  axios@1.18.1(debug@4.4.3(supports-color@8.1.1)):
     dependencies:
       follow-redirects: 1.16.0(debug@4.4.3(supports-color@8.1.1))
       form-data: 4.0.6
+      https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   b4a@1.8.1: {}
 
@@ -3643,7 +3660,7 @@ snapshots:
     dependencies:
       browser-readablestream-to-it: 2.0.10
 
-  brace-expansion@5.0.6:
+  brace-expansion@5.0.7:
     dependencies:
       balanced-match: 4.0.4
 
@@ -3984,7 +4001,7 @@ snapshots:
       get-proto: 1.0.1
       gopd: 1.2.0
       has-symbols: 1.1.0
-      hasown: 2.0.2
+      hasown: 2.0.4
       math-intrinsics: 1.1.0
 
   get-iterator@1.0.2: {}
@@ -4050,6 +4067,7 @@ snapshots:
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   gopd@1.2.0: {}
 
@@ -4079,10 +4097,6 @@ snapshots:
 
   hashlru@2.3.0: {}
 
-  hasown@2.0.2:
-    dependencies:
-      function-bind: 1.1.2
-
   hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
@@ -4098,6 +4112,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  https-proxy-agent@5.0.1:
+    dependencies:
+      agent-base: 6.0.2
+      debug: 4.4.3(supports-color@8.1.1)
+    transitivePeerDependencies:
+      - supports-color
+
   human-signals@2.1.0: {}
 
   iconv-lite@0.6.3:
@@ -4110,7 +4131,7 @@ snapshots:
 
   ieee754@1.2.1: {}
 
-  immutable@5.1.5: {}
+  immutable@5.1.9: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -4187,7 +4208,7 @@ snapshots:
       call-bound: 1.0.4
       gopd: 1.2.0
       has-tostringtag: 1.0.2
-      hasown: 2.0.2
+      hasown: 2.0.4
 
   is-retry-allowed@1.2.0: {}
 
@@ -4277,7 +4298,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  js-yaml@4.2.0:
+  js-yaml@4.3.0:
     dependencies:
       argparse: 2.0.1
 
@@ -4406,7 +4427,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.6
+      brace-expansion: 5.0.7
 
   minipass@7.1.2: {}
 
